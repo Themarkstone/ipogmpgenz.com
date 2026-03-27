@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IPOGMPGENZ.COM</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script defer src="{{ url_for('static', filename='script.js') }}"></script>
+<meta name="description" content="Latest IPO GMP today, upcoming IPOs, grey market premium, IPO subscription status, allotment status, listing gain and detailed IPO analysis in India.">
+
+<meta name="keywords" content="
+IPO GMP today,
+latest IPO GMP,
+upcoming IPO India,
+IPO grey market premium,
+IPO subscription status,
+IPO allotment status,
+IPO listing gain,
+mainboard IPO,
+SME IPO,
+IPO analysis India,
+best IPO to invest,
+IPO price band,
+IPO lot size,
+IPO news India,
+stock market IPO updates
+">
+
+<meta name="author" content="IPOGMPGENZ">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="IPO GMP Today | Latest IPO Updates India">
+<meta property="og:description" content="Check latest IPO GMP, subscription, allotment and listing gain updates in India.">
+<meta property="og:type" content="website">
+
+</head>
+
+<body class="dark">
+
+<!-- HEADER -->
+<header class="header">
+
+  <h1 class="logo">IPOGMPGENZ.COM</h1>
+
+  <nav class="nav">
+    <a href="/" class="nav-btn">Home</a>
+    <a href="/about" class="nav-btn">About</a>
+    <a href="/services" class="nav-btn">Services</a>
+    <button class="mode-btn" onclick="toggleMode()">🌙</button>
+  </nav>
+
+</header>
+<HR>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-text">
+    📊 Latest IPO GMP Today • Real-Time Updates • Expected Listing Gains • GMP is Subject to Market Risk • We Do Not Guarantee Accuracy or Profit • Invest at Your Own Risk ⚠️ 📊 Latest IPO GMP Today • Real-Time Updates • Expected Listing Gains • GMP is Subject to Market Risk • We Do Not Guarantee Accuracy or Profit • Invest at Your Own Risk ⚠️📊 Latest IPO GMP Today • Real-Time Updates • Expected Listing Gains • GMP is Subject to Market Risk • We Do Not Guarantee Accuracy or Profit • Invest at Your Own Risk ⚠️
+  </div>
+</div>
+
+<!-- CARDS -->
+<main class="container">
+
+{% for ipo in ipos %}
+<div class="card">
+  <div class="card-inner">
+
+    <!-- FRONT -->
+    <div class="card-front">
+
+      <h3>{{ ipo["NAME"] }}</h3>
+      <h2 class="profit">Estimated Listing Profit: ₹{{ ipo["PROFIT"] }} per Lot</h2>
+
+      <table class="ipo-table">
+        <tr><td>GMP</td><td>{{ ipo["GMP"] }}</td></tr>
+        <tr><td>Size</td><td>{{ ipo["IPO SIZE"] }}</td></tr>
+        <tr><td>Price</td><td>{{ ipo["PRICE"] }}</td></tr>
+        <tr><td>Lot</td><td>{{ ipo["LOT"] }}</td></tr>
+        <tr><td>Bid</td><td>{{ ipo["BID"] }}</td></tr>
+        <tr><td>Total</td><td>{{ ipo["TOTAL"] }}x</td></tr>
+        <tr><td>P/E</td><td>{{ ipo["P/E RATIO"] }}</td></tr>
+        <tr><td>EPS</td><td>{{ ipo["EPS"] }}</td></tr>
+      </table>
+
+      <button class="flip-btn" onclick="flipCard(this)">View</button>
+
+    </div>
+
+    <!-- BACK -->
+    <div class="card-back">
+
+      <table class="ipo-table">
+        <tr><td>Start</td><td>{{ ipo["START DATE"] }}</td></tr>
+        <tr><td>End</td><td>{{ ipo["END DATE"] }}</td></tr>
+        <tr><td>Allotment</td><td>{{ ipo["ALLOTMENT"] }}</td></tr>
+        <tr><td>Listing</td><td>{{ ipo["LISTING"] }}</td></tr>
+        <tr><td>Retail</td><td>{{ ipo["RETAIL (35%)"] }}</td></tr>
+      </table>
+
+      <div class="links">
+        <a href="{{ ipo['RHP'] }}" target="_blank">RHP</a>
+        <a href="{{ ipo['DRHP'] }}" target="_blank">DRHP</a>
+        <a href="{{ ipo['ALLOTMENTLINK'] }}" target="_blank">Allotment</a>
+      </div>
+
+      <button class="flip-btn" onclick="flipCard(this)">Back</button>
+
+    </div>
+
+  </div>
+</div>
+{% endfor %}
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 IPOGMPGENZ.COM | Visitors: {{ visitors }}
+</footer>
+
+</body>
+</html>
